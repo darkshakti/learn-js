@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let answer = prompt('Кто там?', 'Админ');
+        if (answer === null || answer == '') {
+            alert('Отменено');
+        } else if (answer == 'Админ') {
+            let password = prompt('Пароль?');
+            if (password === null || password == '') {
+                alert('Отменено');
+            } else {
+                if (password == 'Я Главный') {
+                    alert('Здравствуйте!');
+                } else {
+                    alert('Неверный пароль');
+                }
+            }
+        } else {
+            alert('Я вас не знаю');
+        }
+    </script>
+</body>
+
+</html>
