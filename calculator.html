@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Calculator() {
+            this.methods = {
+                "-": (a, b) => a - b,
+                "+": (a, b) => a + b
+            };
+
+            this.calculate = function (str) {
+
+                let split = str.split(' '),
+                    a = +split[0],
+                    op = split[1],
+                    b = +split[2]
+                
+                if (!this.methods[op] || isNaN(a) || isNaN(b)) { // !this.methods[op] логическое выражение, 
+                    // которое проверяет, существует ли указанная операция op в объекте this.methods 
+                    // и имеет ли она значение, которое не является "ложным" (falsey).
+                    return NaN;
+                }
+                return this.methods[op](a, b); 
+            }
+
+                this.addMethod = function(name, func) {
+                    this.methods[name] = func;
+                }
+            }
+            let calc = new Calculator;
+
+            alert(calc.calculate("3 + 7")); // 10
+            alert(calc.calculate("3 * 7")); // NaN
+
+            let powerCalc = new Calculator;
+            powerCalc.addMethod("*", (a, b) => a * b);
+            powerCalc.addMethod("/", (a, b) => a / b);
+            powerCalc.addMethod("**", (a, b) => a ** b);
+
+            let result = powerCalc.calculate("2 ** 3");
+            alert(result); // 8
+
+    </script>
+</body>
+
+</html>
